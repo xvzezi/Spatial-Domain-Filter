@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+	font-size: 14px;
+	padding-left: 12px;
+	line-height: 22px;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	color: #4080D0;
+	text-decoration: none;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+a:hover {
+	color: #4080D0;
+	text-decoration: underline;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left: 5px solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 14px;
+	line-height: 19px;
+}
+
+.mac code {
+	font-size: 12px;
+	line-height: 18px;
+}
+
+code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+/** Theming */
+
+.vscode-light {
+	color: rgb(30, 30, 30);
+}
+
+.vscode-dark {
+	color: #DDD;
+}
+
+.vscode-high-contrast {
+	color: white;
+}
+
+.vscode-light code {
+	color: #A31515;
+}
+
+.vscode-dark code {
+	color: #D7BA7D;
+}
+
+.vscode-light code > div {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark code > div {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast code > div {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+.vscode-light blockquote,
+.vscode-dark blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.vscode-high-contrast blockquote {
+	background: transparent;
+	border-color: #fff;
+}
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	padding: 10px;
+	overflow-wrap: break-word;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+:not(pre):not(.hljs) > code {
+	color: #A31515;
+	font-size: inherit;
+	font-family: inherit;
+}
+
+</style>
+
+</head>
+<body>
+<h1>Spatial Domain Filter</h1>
+<p>author : 许泽资 5140379068</p>
+<h2>Instruction</h2>
+<ul>
+<li>本例采用典型的滤镜框的实现处理方式。实现了包括中值、均值、高斯等在内的空间域滤波。</li>
+<li>本例支持生成均值滤波矩阵；支持自定义的高斯滤波矩阵</li>
+<li>高斯滤波矩阵的计算，采用计算一半，利用对称性填充一半的方式提升效率</li>
+</ul>
+<h2>Result Analysis</h2>
+<ul>
+<li>中值滤波。分别采用5x5，11x11的矩阵求中值，可以发现，最后的效果像是“团墨”的感觉，且矩阵越大，成团效应越明显，<br>
+矩阵取大时，模糊的感觉逐渐消失，最后应当会成为颜色块组成的图像。</li>
+<li>均值滤波。分别采用5x5，11x11的矩阵求均值，可以发现，模糊很明显，相比其他两种方式，均值的方式模糊度更高，<br>
+大矩阵就越来越模糊。</li>
+<li>高斯滤波。sigma = 0.5时，模糊效果几乎没有，但可以去除噪声，矩阵大小大于5时效果几乎无变化，这是由于sigma较小<br>
+，峰顶较陡，所以扩大矩阵无益；sigma = 3时，有一定模糊效果。发现，高斯滤波要用于模糊的话，sigma取值要更大，<br>
+但这是会逼近均值滤波，不若直接采用均值滤波，无益。所以高斯滤波去除噪声是最好的选择。</li>
+</ul>
+<h2>File Announcement</h2>
+<ul>
+<li>tool.py 所有的实现工具</li>
+<li>spatial_domain.py 所有的实现代码</li>
+<li>median5.png 中值5x5</li>
+<li>median11.png 中值11x11</li>
+<li>mean5.png 均值5x5</li>
+<li>mean11.png 均值11x11</li>
+<li>gauss0.5_5.png 高斯5x5 sigma=0.5</li>
+<li>gauss3_5.png 高斯5x5 sigma=3</li>
+<li>gauss3_11.png 高斯11x11 sigma=3</li>
+<li>filters.png 原图</li>
+</ul>
+<h2>Python Environment</h2>
+<pre class="hljs"><code>python3<span class="hljs-number">.5</span>
+pip install Pillow
+</code></pre>
+<h2>Code Description</h2>
+<ul>
+<li>tool.py</li>
+</ul>
+<pre class="hljs"><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Tool</span>:</span>
+
+<span class="hljs-meta">    @classmethod</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">bytesToList</span><span class="hljs-params">(cls, b_list, width, height)</span>:</span>
+    <span class="hljs-string">'''
+    将bytes转化为2D list
+    '''</span>
+
+<span class="hljs-meta">    @classmethod</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">doMedian</span><span class="hljs-params">(cls, source, side)</span>:</span>
+    <span class="hljs-string">'''
+    对source(2D list) 做中值滤波，side指定矩阵大小
+    '''</span>
+
+<span class="hljs-meta">    @classmethod</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">dofilter</span><span class="hljs-params">(cls, source, filter)</span>:</span>
+    <span class="hljs-string">'''
+    对source(2D list) 做filter(2D list)的滤波，filter的长宽应为奇数
+    '''</span>
+
+<span class="hljs-meta">    @classmethod</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">genMean</span><span class="hljs-params">(cls, side = <span class="hljs-number">5</span>)</span>:</span>
+    <span class="hljs-string">'''
+    获取指定side的均值方矩阵(2D list)
+    '''</span>
+
+<span class="hljs-meta">    @classmethod</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">genGauss</span><span class="hljs-params">(cls, side = <span class="hljs-number">5</span>, sigma = <span class="hljs-number">1</span>)</span>:</span>
+    <span class="hljs-string">'''
+    获取指定side，指定sigma的高斯方矩阵(2D list)
+    '''</span>
+
+</code></pre>
+<ul>
+<li>spatial_domain.py</li>
+</ul>
+<pre class="hljs"><code> <span class="hljs-comment"># 生成一系列想要的图片，见文件</span>
+</code></pre>
+
+</body>
+</html>
